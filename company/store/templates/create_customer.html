@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+
+
+{% block content %}
+<form action="" method="post">
+    {% csrf_token %}
+    <p>{{ form.first_name.label }}</p>
+    {{ form.first_name }}
+    <p>{{ form.last_name.label }}</p>
+    {{ form.last_name }}
+    <p>{{ form.email.label }}</p>
+    {{ form.email }}
+    <p>{{ form.phone.label }}</p>
+    {{ form.phone }}
+    <p>{{ form.address.label }}</p>
+    {{ form.address }}
+    <p>{{ form.city.label }}</p>
+    {{ form.city }}
+
+    <p><input type="submit" value="Submit"></p>
+</form>
+{% endblock %}

@@ -1,0 +1,60 @@
+{% extends 'base.html' %}
+
+
+{% block content %}
+
+<div class="row">
+    <div class="col-sm-6">
+        <div class="card">
+            <div class="card-body">
+                <h4 class="card-title">Contact information</h4>
+                <p class="card-text"><h5>Name:</h5> {{ customer.first_name }} {{ customer.last_name }}</p>
+                <p class="card-text"><h5>Phone:</h5>{{ customer.phone }}</p>
+                <p class="card-text"><h5>Email:</h5>{{ customer.email }}</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-sm-6">
+        <div class="card">
+            <div class="card-body">
+                <h5 class="card-title">Self Orders</h5>
+                <p class="card-text"><h3>{{ order_count }}</h3>
+                <a href="{% url 'create_order' customer.id %}" class="btn btn-sm btn-info">Create order</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="card text-center">
+
+    <div class="card-body">
+        <h5 class="card-title">Special title treatment</h5>
+        <table class="table">
+            <thead>
+            <tr>
+                <th scope="col">Product</th>
+                <th scope="col">Category</th>
+                <th scope="col">Date ordered</th>
+                <th scope="col">Status</th>
+                <th scope="col"></th>
+                <th scope="col"></th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for order in orders %}
+            <tr>
+                <td>{{ order.product }}</td>
+                <td>{{ order.product.category }}</td>
+                <td>{{ order.date_created }}</td>
+                <td>{{ order.status }}</td>
+                <td><a href="{% url 'update_order' order.id %}" class="btn btn-sm btn-info">Update</a></td>
+                <td><a href="{% url 'delete_order' order.id %}" class="btn btn-sm btn-danger">Remove</a></td>
+            </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+
+
+{% endblock %}
