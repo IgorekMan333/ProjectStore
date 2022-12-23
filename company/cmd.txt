@@ -1,5 +1,0 @@
-docker-compose run --rm app:django django-admin startproject core .
-cd core
-docker-compose run --rm app:django django-admin startapp myapp .
-pip freeze > requirements.txt
-docker-compose up

@@ -1,11 +1,11 @@
-FROM python:alpine3.11
+FROM python
 
 ENV PYTHONUNBUFFERED=1
 
-WORKDIR /django
+WORKDIR /app
 
-COPY requirement.txt requirement.txt
+COPY . .
 
-RUN pip install -r requirement.txt
-
-
+RUN python -m pip install --upgrade pip
+RUN pip install -r requirements.txt
+RUN python manage.py migrate
